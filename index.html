@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulta de Frota</title>
+ 
+<style>
+body{
+font-family: Arial, sans-serif;
+max-width:600px;
+margin:auto;
+padding:20px;
+background:#f4f6f8;
+}
+ 
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+ 
+h1{
+color:#005A3C;
+}
+ 
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:10px;
+}
+ 
+button{
+padding:12px 20px;
+background:#005A3C;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+ 
+.resultado{
+margin-top:20px;
+padding:15px;
+background:#eef7f3;
+border-radius:8px;
+}
+</style>
+</head>
+ 
+<body>
+ 
+<div class="card">
+ 
+<h1>Status de Carretas</h1>
+ 
+<input type="number" id="go" placeholder="Digite o GO da carreta">
+ 
+<button onclick="consultar()">
+Consultar
+</button>
+ 
+<div class="resultado" id="resultado">
+Aguardando consulta...
+</div>
+ 
+</div>
+ 
+<script>
+ 
+const carretas = [
+{
+go:93556,
+status:"LIBERADO",
+atividade:"OPERANDO",
+cavalo:"78500"
+},
+{
+go:98567,
+status:"EM MANUTENÇÃO",
+atividade:"DESENGATADA",
+cavalo:"SEM"
+},
+{
+go:93566,
+status:"LIBERADO",
+atividade:"DESENGATADA",
+cavalo:"SEM"
+}
+];
+ 
+function consultar(){
+ 
+const go = Number(document.getElementById("go").value);
+ 
+const resultado = document.getElementById("resultado");
+ 
+const registro = carretas.find(x => x.go === go);
+ 
+if(!registro){
+resultado.innerHTML =
+"<b>GO não encontrado.</b>";
+return;
+}
+ 
+resultado.innerHTML = `
+<b>GO CARRETA:</b> ${registro.go}<br><br>
+ 
+<b>STATUS:</b> ${registro.status}<br><br>
+ 
+<b>ATIVIDADE:</b> ${registro.atividade}<br><br>
+ 
+<b>GO CAVALO MECÂNICO:</b> ${registro.cavalo}
+`;
+ 
+}
+ 
+</script>
+ 
+</body>
+</html>
