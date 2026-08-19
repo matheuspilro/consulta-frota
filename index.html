@@ -70,28 +70,41 @@ Aguardando consulta...
  
 <script>
  
-const carretas = [
-{
-go:93556,
-status:"LIBERADO",
-atividade:"OPERANDO",
-cavalo:"78500"
-},
-{
-go:98567,
-status:"EM MANUTENÇÃO",
-atividade:"DESENGATADA",
-cavalo:"SEM"
-},
-{
-go:93566,
-status:"LIBERADO",
-atividade:"DESENGATADA",
-cavalo:"SEM"
-}
-];
+const csvUrl =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=0&single=true&output=csv";
  
-function consultar(){
+let carretas = [];
+ 
+async function carregarDados(){
+ 
+const resposta = await fetch(csvUrl);
+ 
+const texto = await resposta.text();
+ 
+const linhas = texto.trim().split("\n");
+ 
+carretas = [];
+ 
+for(let i = 1; i < linhas.length; i++){
+ 
+const colunas = linhas[i].split(",");
+ 
+carretas.push({
+go: Number(colunas[0]),
+status: colunas[1],
+atividade: colunas[2],
+cavalo: colunas[3]
+});
+ 
+}
+ 
+}
+ 
+async function consultar(){
+ 
+if(carretas.length === 0){
+await carregarDados();
+}
  
 const go = Number(document.getElementById("go").value);
  
@@ -100,8 +113,10 @@ const resultado = document.getElementById("resultado");
 const registro = carretas.find(x => x.go === go);
  
 if(!registro){
+ 
 resultado.innerHTML =
 "<b>GO não encontrado.</b>";
+ 
 return;
 }
  
@@ -114,7 +129,6 @@ resultado.innerHTML = `
  
 <b>GO CAVALO MECÂNICO:</b> ${registro.cavalo}
 `;
- 
 }
  
 </script>
