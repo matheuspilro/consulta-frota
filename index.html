@@ -9,6 +9,10 @@
 
     <style>
 
+        /* ==========================================
+           CONFIGURAÇÕES GERAIS
+        ========================================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,121 +21,380 @@
 
         body {
             font-family: "Segoe UI", Arial, sans-serif;
-            background: #edf2f7;
+            background: #f3f6f4;
+            color: #24332d;
             padding: 25px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: auto;
         }
 
+
+        /* ==========================================
+           CABEÇALHO
+        ========================================== */
+
         .header {
-            background: linear-gradient(135deg, #005A3C, #0A8A5E);
+            background: linear-gradient(
+                135deg,
+                #004d36 0%,
+                #006b4f 55%,
+                #00845f 100%
+            );
+
             color: white;
-            padding: 35px;
-            border-radius: 20px;
+
+            padding: 38px 35px;
+
+            border-radius: 18px;
+
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            margin-bottom: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 77, 54, 0.20);
+
+            margin-bottom: 22px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            border-radius: 50%;
+
+            right: -60px;
+            top: -70px;
         }
 
         .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 31px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
 
         .header p {
             font-size: 15px;
-            opacity: 0.95;
+            opacity: 0.92;
+            position: relative;
+            z-index: 1;
         }
+
+
+        /* ==========================================
+           CARD PRINCIPAL
+        ========================================== */
 
         .card {
             background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            border: 1px solid #e5ebe8;
         }
+
+
+        /* ==========================================
+           TÍTULO DA CONSULTA
+        ========================================== */
+
+        .titulo-consulta {
+            color: #005a3c;
+
+            font-size: 23px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .subtitulo {
+            color: #6b7772;
+
+            font-size: 14px;
+
+            margin-top: -10px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* ==========================================
+           MENU
+        ========================================== */
 
         .menu {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
         }
 
         .menu button {
-            border: none;
-            background: #005A3C;
-            color: white;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 15px;
+
+            border: 1px solid #d9e5df;
+
+            background: #f8faf9;
+
+            color: #005a3c;
+
+            padding: 18px 14px;
+
+            border-radius: 13px;
+
+            font-size: 14px;
+
             font-weight: 600;
+
             cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                background 0.15s ease,
+                box-shadow 0.15s ease;
+
         }
 
         .menu button:hover {
-            background: #007850;
+
+            background: #eaf4ef;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 5px 12px rgba(0, 90, 60, 0.10);
+
         }
 
-        .titulo-consulta {
-            margin-top: 25px;
-            margin-bottom: 15px;
-            color: #005A3C;
-            font-size: 24px;
+        .menu button:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        /* ==========================================
+           CAMPO DE CONSULTA
+        ========================================== */
+
+        .campo-area {
+            margin-top: 28px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #e7ece9;
+        }
+
+        .campo-label {
+
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #4d5a54;
+
+            margin-bottom: 8px;
+
         }
 
         input {
+
             width: 100%;
-            padding: 15px;
-            border: 1px solid #d4d4d4;
+
+            padding: 15px 16px;
+
+            border: 1px solid #d4ddd8;
+
             border-radius: 10px;
+
             font-size: 16px;
+
+            color: #24332d;
+
+            outline: none;
+
+            transition:
+                border 0.2s ease,
+                box-shadow 0.2s ease;
+
         }
 
+        input:focus {
+
+            border-color: #0a8a5e;
+
+            box-shadow:
+                0 0 0 3px rgba(10, 138, 94, 0.12);
+
+        }
+
+
+        /* ==========================================
+           BOTÃO CONSULTAR
+        ========================================== */
+
         #btnConsultar {
+
             width: 100%;
+
             margin-top: 12px;
-            background: #0A8A5E;
+
+            background: #0a8a5e;
+
             color: white;
+
             border: none;
+
             padding: 16px;
+
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
             cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease;
+
         }
 
         #btnConsultar:hover {
+
             background: #08714d;
+
+            transform: translateY(-1px);
+
         }
+
+        #btnConsultar:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        /* ==========================================
+           RESULTADO
+        ========================================== */
 
         .resultado {
-            margin-top: 20px;
-            background: #f8fbf9;
-            border-left: 6px solid #0A8A5E;
+
+            margin-top: 22px;
+
+            background: #f7faf8;
+
+            border: 1px solid #e1ebe6;
+
+            border-left: 5px solid #0a8a5e;
+
             border-radius: 12px;
+
             padding: 20px;
+
             min-height: 90px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.04);
+
             line-height: 1.8;
+
+            color: #35433d;
+
         }
 
+
+        /* ==========================================
+           RODAPÉ
+        ========================================== */
+
         .footer {
+
             text-align: center;
-            margin-top: 20px;
+
+            margin-top: 18px;
+
             font-size: 12px;
-            color: #666;
+
+            color: #78837e;
+
         }
+
+
+        /* ==========================================
+           CELULAR
+        ========================================== */
 
         @media (max-width: 700px) {
 
-            .menu {
-                grid-template-columns: 1fr;
+            body {
+
+                padding: 12px;
+
+            }
+
+            .header {
+
+                padding: 30px 20px;
+
+                border-radius: 15px;
+
             }
 
             .header h1 {
+
                 font-size: 24px;
+
+            }
+
+            .header p {
+
+                font-size: 13px;
+
+                line-height: 1.5;
+
+            }
+
+            .card {
+
+                padding: 20px;
+
+                border-radius: 15px;
+
+            }
+
+            .titulo-consulta {
+
+                font-size: 21px;
+
+            }
+
+            .menu {
+
+                grid-template-columns: 1fr;
+
             }
 
         }
@@ -140,104 +403,186 @@
 
 </head>
 
+
 <body>
 
     <div class="container">
+
+
+        <!-- ==========================================
+             CABEÇALHO
+        ========================================== -->
 
         <div class="header">
 
             <h1>🚛 Portal Operacional de Frota</h1>
 
             <p>
-                Consulta de Status, Programação de Paradas
-                e Posicionamento da Frota
+                Consulta de status, programação de paradas
+                e posicionamento da frota
             </p>
 
         </div>
 
+
+        <!-- ==========================================
+             ÁREA PRINCIPAL
+        ========================================== -->
+
         <div class="card">
+
+
+            <!-- TÍTULO -->
+
+            <h2 class="titulo-consulta" id="tituloConsulta">
+
+                Selecione uma consulta
+
+            </h2>
+
+            <p class="subtitulo">
+
+                Escolha uma das opções abaixo para consultar
+                as informações operacionais.
+
+            </p>
+
+
+            <!-- MENU -->
 
             <div class="menu">
 
                 <button onclick="selecionarModo('status')">
-                    🚛 Status de Carretas
+
+                    🚛<br>
+                    Status de Carretas
+
                 </button>
+
 
                 <button onclick="selecionarModo('parada')">
-                    🔧 Programação de Parada
+
+                    🔧<br>
+                    Programação de Parada
+
                 </button>
+
 
                 <button onclick="selecionarModo('frota')">
-                    📍 Programação da Frota
+
+                    📍<br>
+                    Programação da Frota
+
                 </button>
 
             </div>
 
-            <h2 class="titulo-consulta" id="tituloConsulta">
-                Selecione uma consulta
-            </h2>
 
-            <input
-                type="number"
-                id="codigo"
-                placeholder="Digite um código"
-            >
+            <!-- CAMPO -->
 
-            <button id="btnConsultar" onclick="consultar()">
-                CONSULTAR
-            </button>
+            <div class="campo-area">
 
-            <div class="resultado" id="resultado">
-                Aguardando consulta...
+                <label
+                    class="campo-label"
+                    for="codigo">
+
+                    Código para consulta
+
+                </label>
+
+
+                <input
+                    type="number"
+                    id="codigo"
+                    placeholder="Selecione uma consulta acima"
+                >
+
+
+                <button
+                    id="btnConsultar"
+                    onclick="consultar()">
+
+                    CONSULTAR
+
+                </button>
+
             </div>
 
+
+            <!-- RESULTADO -->
+
+            <div
+                class="resultado"
+                id="resultado">
+
+                Aguardando consulta...
+
+            </div>
+
+
         </div>
 
+
+        <!-- ==========================================
+             RODAPÉ
+        ========================================== -->
+
         <div class="footer">
-            Dados atualizados automaticamente a partir da base operacional do CCO
+
+            Dados atualizados automaticamente a partir
+            da base operacional do CCO
+
         </div>
+
 
     </div>
 
+
     <script>
 
-        // ==========================================
-        // LINKS DAS PLANILHAS
-        // ==========================================
+
+        /* ==========================================
+           LINKS DAS PLANILHAS
+        ========================================== */
 
         const URL_STATUS =
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=0&single=true&output=csv";
 
+
         const URL_PARADA =
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=1043445685&single=true&output=csv";
+
 
         const URL_FROTA =
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=177734172&single=true&output=csv";
 
 
-        // ==========================================
-        // MODO ATUAL
-        // ==========================================
-
         let modoAtual = "";
 
 
-        // ==========================================
-        // SELECIONAR TIPO DE CONSULTA
-        // ==========================================
+        /* ==========================================
+           SELECIONAR MODO
+        ========================================== */
 
         function selecionarModo(modo) {
 
             modoAtual = modo;
 
             const titulo =
-                document.getElementById("tituloConsulta");
+                document.getElementById(
+                    "tituloConsulta"
+                );
 
             const campo =
-                document.getElementById("codigo");
+                document.getElementById(
+                    "codigo"
+                );
 
             const resultado =
-                document.getElementById("resultado");
+                document.getElementById(
+                    "resultado"
+                );
+
 
             resultado.innerHTML =
                 "Aguardando consulta...";
@@ -278,46 +623,69 @@
         }
 
 
-        // ==========================================
-        // CARREGAR CSV
-        // ==========================================
+        /* ==========================================
+           CARREGAR CSV
+        ========================================== */
 
         async function carregarCSV(url) {
 
-            const resposta = await fetch(
-                url + "&t=" + new Date().getTime()
-            );
+            const resposta =
+                await fetch(
+                    url +
+                    "&t=" +
+                    new Date().getTime()
+                );
+
 
             if (!resposta.ok) {
-                throw new Error("Não foi possível acessar a planilha.");
+
+                throw new Error(
+                    "Não foi possível acessar a planilha."
+                );
+
             }
+
 
             const texto =
                 await resposta.text();
 
-            return texto.trim().split("\n");
+
+            return texto
+                .trim()
+                .split("\n");
+
         }
 
 
-        // ==========================================
-        // CONSULTAR
-        // ==========================================
+        /* ==========================================
+           CONSULTAR
+        ========================================== */
 
         async function consultar() {
 
+
             if (modoAtual === "") {
 
-                alert("Selecione uma consulta.");
+                alert(
+                    "Selecione uma consulta."
+                );
 
                 return;
+
             }
 
 
             const valor =
-                document.getElementById("codigo").value.trim();
+                document
+                    .getElementById("codigo")
+                    .value
+                    .trim();
+
 
             const resultado =
-                document.getElementById("resultado");
+                document.getElementById(
+                    "resultado"
+                );
 
 
             if (valor === "") {
@@ -326,6 +694,7 @@
                     "⚠️ Digite um código para realizar a consulta.";
 
                 return;
+
             }
 
 
@@ -336,94 +705,152 @@
             try {
 
 
-                // ==========================================
-                // STATUS DE CARRETAS
-                // ==========================================
+                /* ==========================================
+                   STATUS
+                ========================================== */
 
                 if (modoAtual === "status") {
 
                     const linhas =
-                        await carregarCSV(URL_STATUS);
+                        await carregarCSV(
+                            URL_STATUS
+                        );
 
-                    for (let i = 1; i < linhas.length; i++) {
+
+                    for (
+                        let i = 1;
+                        i < linhas.length;
+                        i++
+                    ) {
 
                         const c =
                             linhas[i].split(",");
 
-                        if (c[0].trim() == valor) {
+
+                        if (
+                            c[0].trim() == valor
+                        ) {
 
                             resultado.innerHTML = `
-                                <b>GO CARRETA:</b> ${c[0]}<br>
-                                <b>STATUS:</b> ${c[1]}<br>
-                                <b>ATIVIDADE:</b> ${c[2]}<br>
-                                <b>GO CAVALO:</b> ${c[3]}
+
+                                <b>GO CARRETA:</b>
+                                ${c[0]}<br>
+
+                                <b>STATUS:</b>
+                                ${c[1]}<br>
+
+                                <b>ATIVIDADE:</b>
+                                ${c[2]}<br>
+
+                                <b>GO CAVALO:</b>
+                                ${c[3]}
+
                             `;
 
                             return;
+
                         }
+
                     }
+
                 }
 
 
-                // ==========================================
-                // PROGRAMAÇÃO DE PARADA
-                // ==========================================
+                /* ==========================================
+                   PARADA
+                ========================================== */
 
                 if (modoAtual === "parada") {
 
                     const linhas =
-                        await carregarCSV(URL_PARADA);
+                        await carregarCSV(
+                            URL_PARADA
+                        );
 
-                    for (let i = 1; i < linhas.length; i++) {
+
+                    for (
+                        let i = 1;
+                        i < linhas.length;
+                        i++
+                    ) {
 
                         const c =
                             linhas[i].split(",");
 
-                        if (c[0].trim() == valor) {
+
+                        if (
+                            c[0].trim() == valor
+                        ) {
 
                             resultado.innerHTML = `
-                                <b>GO CARRETA:</b> ${c[0]}<br>
-                                <b>TIPO PARADA:</b> ${c[1]}<br>
-                                <b>DIA APROXIMADO:</b> ${c[2]}
+
+                                <b>GO CARRETA:</b>
+                                ${c[0]}<br>
+
+                                <b>TIPO PARADA:</b>
+                                ${c[1]}<br>
+
+                                <b>DIA APROXIMADO:</b>
+                                ${c[2]}
+
                             `;
 
                             return;
+
                         }
+
                     }
+
                 }
 
 
-                // ==========================================
-                // PROGRAMAÇÃO DA FROTA
-                // ==========================================
+                /* ==========================================
+                   FROTA
+                ========================================== */
 
                 if (modoAtual === "frota") {
 
                     const linhas =
-                        await carregarCSV(URL_FROTA);
+                        await carregarCSV(
+                            URL_FROTA
+                        );
 
-                    for (let i = 1; i < linhas.length; i++) {
+
+                    for (
+                        let i = 1;
+                        i < linhas.length;
+                        i++
+                    ) {
 
                         const c =
                             linhas[i].split(",");
 
-                        if (c[0].trim() == valor) {
+
+                        if (
+                            c[0].trim() == valor
+                        ) {
 
                             resultado.innerHTML = `
-                                <b>GO CAVALO:</b> ${c[0]}<br>
-                                <b>FRENTE:</b> ${c[1]}<br>
-                                <b>LOCALIZAÇÃO:</b> ${c[2]}
+
+                                <b>GO CAVALO:</b>
+                                ${c[0]}<br>
+
+                                <b>FRENTE:</b>
+                                ${c[1]}<br>
+
+                                <b>LOCALIZAÇÃO:</b>
+                                ${c[2]}
+
                             `;
 
                             return;
+
                         }
+
                     }
+
                 }
 
-
-                // ==========================================
-                // NÃO ENCONTROU
-                // ==========================================
 
                 resultado.innerHTML =
                     "⚠️ Registro não encontrado.";
