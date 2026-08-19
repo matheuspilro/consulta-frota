@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consulta de Frota</title>
+<title>Portal Operacional de Frota</title>
  
 <style>
+ 
 body{
 font-family: Arial, sans-serif;
-max-width:600px;
+background:#f4f6f8;
+max-width:700px;
 margin:auto;
 padding:20px;
-background:#f4f6f8;
 }
  
 .card{
@@ -23,6 +24,23 @@ box-shadow:0 2px 8px rgba(0,0,0,.1);
  
 h1{
 color:#005A3C;
+text-align:center;
+}
+ 
+.menu{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-bottom:20px;
+}
+ 
+.menu button{
+background:#005A3C;
+color:white;
+border:none;
+padding:14px;
+border-radius:8px;
+cursor:pointer;
 }
  
 input{
@@ -30,13 +48,15 @@ width:100%;
 padding:12px;
 margin-top:10px;
 margin-bottom:10px;
+box-sizing:border-box;
 }
  
-button{
-padding:12px 20px;
-background:#005A3C;
+#btnConsultar{
+width:100%;
+background:#0f766e;
 color:white;
 border:none;
+padding:12px;
 border-radius:8px;
 cursor:pointer;
 }
@@ -47,18 +67,44 @@ padding:15px;
 background:#eef7f3;
 border-radius:8px;
 }
+ 
 </style>
+ 
 </head>
  
 <body>
  
 <div class="card">
  
-<h1>Status de Carretas</h1>
+<h1>🚛 Portal Operacional de Frota</h1>
  
-<input type="number" id="go" placeholder="Digite o GO da carreta">
+<div class="menu">
  
-<button onclick="consultar()">
+<button onclick="selecionarModo('status')">
+🚛 Status de Carretas
+</button>
+ 
+<button onclick="selecionarModo('parada')">
+🔧 Programação de Parada
+</button>
+ 
+<button onclick="selecionarModo('frota')">
+📍 Programação da Frota
+</button>
+ 
+</div>
+ 
+<h3 id="tituloConsulta">
+Selecione uma consulta acima
+</h3>
+ 
+<input
+type="number"
+id="codigo"
+placeholder="Digite o código"
+>
+ 
+<button id="btnConsultar" onclick="consultar()">
 Consultar
 </button>
  
@@ -70,67 +116,177 @@ Aguardando consulta...
  
 <script>
  
-const csvUrl =
+const URL_STATUS =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=0&single=true&output=csv";
  
-let carretas = [];
+const URL_PARADA =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=1043445685&single=true&output=csv";
  
-async function carregarDados(){
+const URL_FROTA =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=177734172&single=true&output=csv";
  
-const resposta = await fetch(csvUrl);
+let modoAtual = "";
  
-const texto = await resposta.text();
+function selecionarModo(modo){
  
-const linhas = texto.trim().split("\n");
+modoAtual = modo;
  
-carretas = [];
+const titulo =
+document.getElementById("tituloConsulta");
  
-for(let i = 1; i < linhas.length; i++){
+const campo =
+document.getElementById("codigo");
  
-const colunas = linhas[i].split(",");
+if(modo === "status"){
  
-carretas.push({
-go: Number(colunas[0]),
-status: colunas[1],
-atividade: colunas[2],
-cavalo: colunas[3]
-});
+titulo.innerHTML =
+"🚛 Consulta Status de Carretas";
+ 
+campo.placeholder =
+"Digite o GO da Carreta";
  
 }
+ 
+if(modo === "parada"){
+ 
+titulo.innerHTML =
+"🔧 Consulta Programação de Parada";
+ 
+campo.placeholder =
+"Digite o GO da Carreta";
+ 
+}
+ 
+if(modo === "frota"){
+ 
+titulo.innerHTML =
+"📍 Consulta Programação da Frota";
+ 
+campo.placeholder =
+"Digite o GO do Cavalo Mecânico";
+ 
+}
+ 
+}
+ 
+async function carregarCSV(url){
+ 
+const resposta =
+await fetch(
+url + "&t=" + new Date().getTime()
+);
+ 
+const texto =
+await resposta.text();
+ 
+return texto.trim().split("\n");
  
 }
  
 async function consultar(){
  
-alert("Botão clicado");
+if(modoAtual === ""){
  
-if(carretas.length === 0){
-await carregarDados();
+alert(
+"Selecione uma consulta."
+);
+ 
+return;
+ 
 }
  
-const go = Number(document.getElementById("go").value);
+const valor =
+document.getElementById("codigo").value;
  
-const resultado = document.getElementById("resultado");
+const resultado =
+document.getElementById("resultado");
  
-const registro = carretas.find(x => x.go === go);
+if(modoAtual === "status"){
  
-if(!registro){
+const linhas =
+await carregarCSV(URL_STATUS);
  
-resultado.innerHTML =
-"<b>GO não encontrado.</b>";
+for(let i=1;i<linhas.length;i++){
+ 
+const c =
+linhas[i].split(",");
+ 
+if(c[0] == valor){
+ 
+resultado.innerHTML = `
+<b>GO CARRETA:</b> ${c[0]}<br><br>
+ 
+<b>STATUS:</b> ${c[1]}<br><br>
+ 
+<b>ATIVIDADE:</b> ${c[2]}<br><br>
+ 
+<b>GO CAVALO MECÂNICO:</b> ${c[3]}
+`;
  
 return;
 }
  
+}
+ 
+}
+ 
+if(modoAtual === "parada"){
+ 
+const linhas =
+await carregarCSV(URL_PARADA);
+ 
+for(let i=1;i<linhas.length;i++){
+ 
+const c =
+linhas[i].split(",");
+ 
+if(c[0] == valor){
+ 
 resultado.innerHTML = `
-<b>GO CARRETA:</b> ${registro.go}<br><br>
+<b>GO CARRETA:</b> ${c[0]}<br><br>
  
-<b>STATUS:</b> ${registro.status}<br><br>
+<b>TIPO DE PARADA:</b> ${c[1]}<br><br>
  
-<b>ATIVIDADE:</b> ${registro.atividade}<br><br>
- 
-<b>GO CAVALO MECÂNICO:</b> ${registro.cavalo}
+<b>DIA APROXIMADO:</b> ${c[2]}
 `;
+ 
+return;
+}
+ 
+}
+ 
+}
+ 
+if(modoAtual === "frota"){
+ 
+const linhas =
+await carregarCSV(URL_FROTA);
+ 
+for(let i=1;i<linhas.length;i++){
+ 
+const c =
+linhas[i].split(",");
+ 
+if(c[0] == valor){
+ 
+resultado.innerHTML = `
+<b>GO CAVALO:</b> ${c[0]}<br><br>
+ 
+<b>FRENTE:</b> ${c[1]}<br><br>
+ 
+<b>LOCALIZAÇÃO:</b> ${c[2]}
+`;
+ 
+return;
+}
+ 
+}
+ 
+}
+ 
+resultado.innerHTML =
+"⚠️ Registro não encontrado.";
+ 
 }
  
 </script>
