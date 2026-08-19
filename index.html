@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+ 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
 <title>Portal Operacional de Frota</title>
  
 <style>
@@ -10,28 +12,45 @@
 body{
 font-family: Arial, sans-serif;
 background:#f4f6f8;
-max-width:700px;
-margin:auto;
+margin:0;
 padding:20px;
+}
+ 
+.container{
+max-width:800px;
+margin:auto;
+}
+ 
+.header{
+background:linear-gradient(135deg,#005A3C,#008B5E);
+color:white;
+padding:25px;
+border-radius:12px;
+text-align:center;
+margin-bottom:20px;
+}
+ 
+.header h1{
+margin:0;
+}
+ 
+.subtitulo{
+margin-top:10px;
+font-size:14px;
+opacity:.9;
 }
  
 .card{
 background:white;
 padding:20px;
 border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,.1);
-}
- 
-h1{
-color:#005A3C;
-text-align:center;
+box-shadow:0 2px 12px rgba(0,0,0,.08);
 }
  
 .menu{
 display:flex;
 flex-direction:column;
 gap:10px;
-margin-bottom:20px;
 }
  
 .menu button{
@@ -39,33 +58,59 @@ background:#005A3C;
 color:white;
 border:none;
 padding:14px;
-border-radius:8px;
+border-radius:10px;
+font-size:15px;
+font-weight:bold;
 cursor:pointer;
+transition:.2s;
+}
+ 
+.menu button:hover{
+background:#00724d;
+}
+ 
+.tituloConsulta{
+margin-top:20px;
+font-size:20px;
+color:#005A3C;
 }
  
 input{
 width:100%;
 padding:12px;
-margin-top:10px;
-margin-bottom:10px;
+margin-top:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:8px;
 box-sizing:border-box;
 }
  
 #btnConsultar{
 width:100%;
+padding:14px;
 background:#0f766e;
 color:white;
 border:none;
-padding:12px;
-border-radius:8px;
+border-radius:10px;
+font-size:15px;
+font-weight:bold;
 cursor:pointer;
 }
  
 .resultado{
 margin-top:20px;
-padding:15px;
-background:#eef7f3;
-border-radius:8px;
+background:white;
+border-left:6px solid #005A3C;
+border-radius:10px;
+padding:20px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+ 
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:12px;
+color:#777;
 }
  
 </style>
@@ -74,9 +119,19 @@ border-radius:8px;
  
 <body>
  
-<div class="card">
+<div class="container">
+ 
+<div class="header">
  
 <h1>🚛 Portal Operacional de Frota</h1>
+ 
+<div class="subtitulo">
+Consulta de Status, Programação de Paradas e Posicionamento da Frota
+</div>
+ 
+</div>
+ 
+<div class="card">
  
 <div class="menu">
  
@@ -94,22 +149,27 @@ border-radius:8px;
  
 </div>
  
-<h3 id="tituloConsulta">
-Selecione uma consulta acima
-</h3>
+<h2 class="tituloConsulta" id="tituloConsulta">
+Selecione uma consulta
+</h2>
  
 <input
 type="number"
 id="codigo"
-placeholder="Digite o código"
->
+placeholder="Digite um código">
  
 <button id="btnConsultar" onclick="consultar()">
-Consultar
+CONSULTAR
 </button>
  
 <div class="resultado" id="resultado">
 Aguardando consulta...
+</div>
+ 
+</div>
+ 
+<div class="footer">
+Dados atualizados automaticamente a partir da base operacional do CCO.
 </div>
  
 </div>
@@ -139,7 +199,7 @@ document.getElementById("codigo");
  
 if(modo === "status"){
  
-titulo.innerHTML =
+titulo.innerText =
 "🚛 Consulta Status de Carretas";
  
 campo.placeholder =
@@ -149,7 +209,7 @@ campo.placeholder =
  
 if(modo === "parada"){
  
-titulo.innerHTML =
+titulo.innerText =
 "🔧 Consulta Programação de Parada";
  
 campo.placeholder =
@@ -159,7 +219,7 @@ campo.placeholder =
  
 if(modo === "frota"){
  
-titulo.innerHTML =
+titulo.innerText =
 "📍 Consulta Programação da Frota";
  
 campo.placeholder =
@@ -171,13 +231,11 @@ campo.placeholder =
  
 async function carregarCSV(url){
  
-const resposta =
-await fetch(
+const resposta = await fetch(
 url + "&t=" + new Date().getTime()
 );
  
-const texto =
-await resposta.text();
+const texto = await resposta.text();
  
 return texto.trim().split("\n");
  
@@ -185,13 +243,9 @@ return texto.trim().split("\n");
  
 async function consultar(){
  
-alert("Consultando...");
- 
 if(modoAtual === ""){
  
-alert(
-"Selecione uma consulta."
-);
+alert("Selecione uma consulta.");
  
 return;
  
@@ -217,11 +271,8 @@ if(c[0] == valor){
  
 resultado.innerHTML = `
 <b>GO CARRETA:</b> ${c[0]}<br><br>
- 
 <b>STATUS:</b> ${c[1]}<br><br>
- 
 <b>ATIVIDADE:</b> ${c[2]}<br><br>
- 
 <b>GO CAVALO MECÂNICO:</b> ${c[3]}
 `;
  
@@ -246,9 +297,7 @@ if(c[0] == valor){
  
 resultado.innerHTML = `
 <b>GO CARRETA:</b> ${c[0]}<br><br>
- 
 <b>TIPO DE PARADA:</b> ${c[1]}<br><br>
- 
 <b>DIA APROXIMADO:</b> ${c[2]}
 `;
  
@@ -273,9 +322,7 @@ if(c[0] == valor){
  
 resultado.innerHTML = `
 <b>GO CAVALO:</b> ${c[0]}<br><br>
- 
-<b>FRENTE:</b> ${c[1]}<br><br>
- 
+<b>FRENTE DE CARREGAMENTO:</b> ${c[1]}<br><br>
 <b>LOCALIZAÇÃO:</b> ${c[2]}
 `;
  
