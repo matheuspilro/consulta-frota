@@ -45,11 +45,8 @@
             );
 
             color: white;
-
             padding: 38px 35px;
-
             border-radius: 18px;
-
             text-align: center;
 
             box-shadow:
@@ -80,6 +77,7 @@
             font-size: 31px;
             font-weight: 700;
             margin-bottom: 10px;
+
             position: relative;
             z-index: 1;
         }
@@ -87,6 +85,7 @@
         .header p {
             font-size: 15px;
             opacity: 0.92;
+
             position: relative;
             z-index: 1;
         }
@@ -205,9 +204,21 @@
 
         }
 
-        .carregamento-titulo {
+        .carregamento-cabecalho {
 
-            display: block;
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 14px;
+
+        }
+
+        .carregamento-titulo {
 
             font-size: 13px;
 
@@ -215,7 +226,52 @@
 
             color: #4d5a54;
 
-            margin-bottom: 12px;
+        }
+
+        .btn-atualizar {
+
+            border: 1px solid #0a8a5e;
+
+            background: white;
+
+            color: #0a8a5e;
+
+            padding: 9px 14px;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.15s ease;
+
+            white-space: nowrap;
+
+        }
+
+        .btn-atualizar:hover {
+
+            background: #0a8a5e;
+
+            color: white;
+
+            transform: translateY(-1px);
+
+        }
+
+        .btn-atualizar:disabled {
+
+            opacity: 0.6;
+
+            cursor: wait;
+
+            transform: none;
 
         }
 
@@ -586,6 +642,20 @@
 
             }
 
+            .carregamento-cabecalho {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+            .btn-atualizar {
+
+                width: 100%;
+
+            }
+
         }
 
     </style>
@@ -623,11 +693,15 @@
 
             <!-- TÍTULO -->
 
-            <h2 class="titulo-consulta" id="tituloConsulta">
+            <h2
+                class="titulo-consulta"
+                id="tituloConsulta"
+            >
 
                 Selecione uma consulta
 
             </h2>
+
 
             <p class="subtitulo">
 
@@ -637,11 +711,15 @@
             </p>
 
 
-            <!-- MENU -->
+            <!-- ==========================================
+                 MENU
+            ========================================== -->
 
             <div class="menu">
 
-                <button onclick="selecionarModo('status')">
+                <button
+                    onclick="selecionarModo('status')"
+                >
 
                     🚛<br>
                     Status de Carretas
@@ -649,7 +727,9 @@
                 </button>
 
 
-                <button onclick="selecionarModo('parada')">
+                <button
+                    onclick="selecionarModo('parada')"
+                >
 
                     🔧<br>
                     Programação de Parada
@@ -657,7 +737,9 @@
                 </button>
 
 
-                <button onclick="selecionarModo('frota')">
+                <button
+                    onclick="selecionarModo('frota')"
+                >
 
                     📍<br>
                     Programação da Frota
@@ -665,7 +747,9 @@
                 </button>
 
 
-                <button onclick="selecionarModo('carregamento')">
+                <button
+                    onclick="selecionarModo('carregamento')"
+                >
 
                     🪵<br>
                     Carregamento
@@ -685,11 +769,26 @@
                 style="display: none;"
             >
 
-                <label class="carregamento-titulo">
+                <div class="carregamento-cabecalho">
 
-                    Selecione a frente de carregamento:
+                    <span class="carregamento-titulo">
 
-                </label>
+                        Selecione a frente de carregamento:
+
+                    </span>
+
+
+                    <button
+                        class="btn-atualizar"
+                        id="btnAtualizar"
+                        onclick="carregarFrentes()"
+                    >
+
+                        🔄 Atualizar dados
+
+                    </button>
+
+                </div>
 
 
                 <div
@@ -715,7 +814,8 @@
 
                 <label
                     class="campo-label"
-                    for="codigo">
+                    for="codigo"
+                >
 
                     Código para consulta
 
@@ -731,7 +831,8 @@
 
                 <button
                     id="btnConsultar"
-                    onclick="consultar()">
+                    onclick="consultar()"
+                >
 
                     CONSULTAR
 
@@ -746,7 +847,8 @@
 
             <div
                 class="resultado"
-                id="resultado">
+                id="resultado"
+            >
 
                 Aguardando consulta...
 
@@ -800,7 +902,7 @@
 
 
         /* ==========================================
-           FUNÇÃO PARA INTERPRETAR CSV
+           SEPARAR CSV
         ========================================== */
 
         function separarCSV(linha) {
@@ -808,7 +910,9 @@
             const resultado = [];
 
             let campo = "";
+
             let dentroAspas = false;
+
 
             for (
                 let i = 0;
@@ -861,6 +965,7 @@
 
             }
 
+
             resultado.push(campo);
 
             return resultado;
@@ -874,11 +979,38 @@
 
         async function carregarCSV(url) {
 
+            const separador =
+                url.includes("?")
+                    ? "&"
+                    : "?";
+
+
+            const urlAtualizada =
+                url +
+                separador +
+                "cachebust=" +
+                Date.now();
+
+
             const resposta =
                 await fetch(
-                    url +
-                    "&t=" +
-                    new Date().getTime()
+                    urlAtualizada,
+                    {
+                        method: "GET",
+
+                        cache: "no-store",
+
+                        headers: {
+                            "Cache-Control":
+                                "no-cache, no-store, must-revalidate",
+
+                            "Pragma":
+                                "no-cache",
+
+                            "Expires":
+                                "0"
+                        }
+                    }
                 );
 
 
@@ -1025,6 +1157,9 @@
                 "Aguardando consulta...";
 
 
+            campo.value = "";
+
+
             carregamentoArea.style.display =
                 "none";
 
@@ -1033,15 +1168,13 @@
                 "block";
 
 
-            campo.value =
-                "";
-
-
             /* ==========================================
                STATUS
             ========================================== */
 
-            if (modo === "status") {
+            if (
+                modo === "status"
+            ) {
 
                 titulo.innerText =
                     "🚛 Consulta Status de Carretas";
@@ -1056,7 +1189,9 @@
                PARADA
             ========================================== */
 
-            if (modo === "parada") {
+            if (
+                modo === "parada"
+            ) {
 
                 titulo.innerText =
                     "🔧 Consulta Programação de Parada";
@@ -1071,7 +1206,9 @@
                FROTA
             ========================================== */
 
-            if (modo === "frota") {
+            if (
+                modo === "frota"
+            ) {
 
                 titulo.innerText =
                     "📍 Consulta Programação da Frota";
@@ -1121,8 +1258,31 @@
                 );
 
 
+            const btnAtualizar =
+                document.getElementById(
+                    "btnAtualizar"
+                );
+
+
+            /* ==========================================
+               LIMPA DADOS ANTIGOS
+            ========================================== */
+
+            dadosCarregamento = [];
+
+
+            /* ==========================================
+               ESTADO DE ATUALIZAÇÃO
+            ========================================== */
+
+            btnAtualizar.disabled = true;
+
+            btnAtualizar.innerText =
+                "🔄 Atualizando...";
+
+
             frentesGrid.innerHTML =
-                "🔄 Carregando frentes...";
+                "🔄 Buscando dados atualizados...";
 
 
             try {
@@ -1170,8 +1330,9 @@
                 }
 
 
-                dadosCarregamento = [];
-
+                /* ==========================================
+                   RECONSTRÓI OS DADOS DO ZERO
+                ========================================== */
 
                 for (
                     let i = 1;
@@ -1225,8 +1386,16 @@
                 }
 
 
+                /* ==========================================
+                   LIMPA BOTÕES ANTIGOS
+                ========================================== */
+
                 frentesGrid.innerHTML = "";
 
+
+                /* ==========================================
+                   CRIA NOVOS BOTÕES
+                ========================================== */
 
                 dadosCarregamento.forEach(
                     (frente, indice) => {
@@ -1269,8 +1438,23 @@
 
                 console.error(erro);
 
-                frentesGrid.innerHTML =
-                    "❌ Erro ao carregar as frentes. Verifique se a planilha está publicada corretamente.";
+                frentesGrid.innerHTML = `
+
+                    ❌ Erro ao atualizar os dados.
+
+                    <br><br>
+
+                    Verifique se a planilha está publicada
+                    corretamente e tente novamente.
+
+                `;
+
+            } finally {
+
+                btnAtualizar.disabled = false;
+
+                btnAtualizar.innerText =
+                    "🔄 Atualizar dados";
 
             }
 
@@ -1285,12 +1469,6 @@
             indice,
             botao
         ) {
-
-            const resultado =
-                document.getElementById(
-                    "resultado"
-                );
-
 
             const todosBotoes =
                 document.querySelectorAll(
@@ -1315,6 +1493,13 @@
                 dadosCarregamento[
                     indice
                 ];
+
+
+            if (!frente) {
+
+                return;
+
+            }
 
 
             mostrarDadosFrente(
@@ -1400,6 +1585,7 @@
                         return "-";
 
                     }
+
 
                     return dados[indice].trim();
 
@@ -1542,7 +1728,7 @@
             }
 
 
-            const valor =
+            const valorDigitado =
                 document
                     .getElementById(
                         "codigo"
@@ -1558,7 +1744,7 @@
 
 
             if (
-                valor === ""
+                valorDigitado === ""
             ) {
 
                 resultado.innerHTML =
@@ -1609,7 +1795,8 @@
 
 
                         if (
-                            c[0].trim() == valor
+                            c[0].trim() ==
+                            valorDigitado
                         ) {
 
                             const ultimaAtualizacao =
@@ -1681,7 +1868,8 @@
 
 
                         if (
-                            c[0].trim() == valor
+                            c[0].trim() ==
+                            valorDigitado
                         ) {
 
                             const ultimaAtualizacao =
@@ -1750,7 +1938,8 @@
 
 
                         if (
-                            c[0].trim() == valor
+                            c[0].trim() ==
+                            valorDigitado
                         ) {
 
                             const ultimaAtualizacao =
@@ -1800,6 +1989,7 @@
             }
 
         }
+
 
     </script>
 
