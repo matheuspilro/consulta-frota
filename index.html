@@ -2,10 +2,14 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Portal Operacional de Frota</title>
+
 
     <style>
 
@@ -19,16 +23,29 @@
             box-sizing: border-box;
         }
 
+
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
             background: #f3f6f4;
+
             color: #24332d;
+
             padding: 25px;
+
         }
 
+
         .container {
+
             max-width: 950px;
+
             margin: auto;
+
         }
 
 
@@ -37,57 +54,83 @@
         ========================================== */
 
         .header {
-            background: linear-gradient(
-                135deg,
-                #004d36 0%,
-                #006b4f 55%,
-                #00845f 100%
-            );
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #004d36 0%,
+                    #006b4f 55%,
+                    #00845f 100%
+                );
 
             color: white;
+
             padding: 38px 35px;
+
             border-radius: 18px;
+
             text-align: center;
 
             box-shadow:
-                0 10px 30px rgba(0, 77, 54, 0.20);
+                0 10px 30px
+                rgba(0, 77, 54, 0.20);
 
             margin-bottom: 22px;
 
             position: relative;
+
             overflow: hidden;
+
         }
 
+
         .header::after {
+
             content: "";
+
             position: absolute;
 
             width: 180px;
+
             height: 180px;
 
-            background: rgba(255, 255, 255, 0.05);
+            background:
+                rgba(255, 255, 255, 0.05);
 
             border-radius: 50%;
 
             right: -60px;
+
             top: -70px;
+
         }
 
+
         .header h1 {
+
             font-size: 31px;
+
             font-weight: 700;
+
             margin-bottom: 10px;
 
             position: relative;
+
             z-index: 1;
+
         }
 
+
         .header p {
+
             font-size: 15px;
+
             opacity: 0.92;
 
             position: relative;
+
             z-index: 1;
+
         }
 
 
@@ -96,6 +139,7 @@
         ========================================== */
 
         .card {
+
             background: white;
 
             border-radius: 18px;
@@ -103,17 +147,20 @@
             padding: 30px;
 
             box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.08);
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
 
             border: 1px solid #e5ebe8;
+
         }
 
 
         /* ==========================================
-           TÍTULO DA CONSULTA
+           TÍTULO
         ========================================== */
 
         .titulo-consulta {
+
             color: #005a3c;
 
             font-size: 23px;
@@ -121,9 +168,12 @@
             font-weight: 700;
 
             margin-bottom: 18px;
+
         }
 
+
         .subtitulo {
+
             color: #6b7772;
 
             font-size: 14px;
@@ -131,6 +181,7 @@
             margin-top: -10px;
 
             margin-bottom: 22px;
+
         }
 
 
@@ -139,13 +190,16 @@
         ========================================== */
 
         .menu {
+
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
             gap: 14px;
+
         }
+
 
         .menu button {
 
@@ -172,6 +226,7 @@
 
         }
 
+
         .menu button:hover {
 
             background: #eaf4ef;
@@ -179,9 +234,11 @@
             transform: translateY(-2px);
 
             box-shadow:
-                0 5px 12px rgba(0, 90, 60, 0.10);
+                0 5px 12px
+                rgba(0, 90, 60, 0.10);
 
         }
+
 
         .menu button:active {
 
@@ -191,7 +248,7 @@
 
 
         /* ==========================================
-           ÁREA DE CARREGAMENTO
+           ÁREA CARREGAMENTO
         ========================================== */
 
         .carregamento-area {
@@ -204,6 +261,7 @@
 
         }
 
+
         .carregamento-cabecalho {
 
             display: flex;
@@ -214,9 +272,10 @@
 
             gap: 15px;
 
-            margin-bottom: 14px;
+            margin-bottom: 15px;
 
         }
+
 
         .carregamento-titulo {
 
@@ -227,6 +286,7 @@
             color: #4d5a54;
 
         }
+
 
         .btn-atualizar {
 
@@ -246,14 +306,15 @@
 
             cursor: pointer;
 
+            white-space: nowrap;
+
             transition:
                 background 0.2s ease,
                 color 0.2s ease,
                 transform 0.15s ease;
 
-            white-space: nowrap;
-
         }
+
 
         .btn-atualizar:hover {
 
@@ -265,15 +326,19 @@
 
         }
 
+
         .btn-atualizar:disabled {
 
             opacity: 0.6;
 
             cursor: wait;
 
-            transform: none;
-
         }
+
+
+        /* ==========================================
+           BOTÕES DAS FRENTES
+        ========================================== */
 
         .frentes-grid {
 
@@ -285,6 +350,7 @@
             gap: 12px;
 
         }
+
 
         .frente-button {
 
@@ -311,6 +377,7 @@
 
         }
 
+
         .frente-button:hover {
 
             background: #eaf4ef;
@@ -318,9 +385,11 @@
             transform: translateY(-2px);
 
             box-shadow:
-                0 5px 12px rgba(0, 90, 60, 0.10);
+                0 5px 12px
+                rgba(0, 90, 60, 0.10);
 
         }
+
 
         .frente-button.selecionada {
 
@@ -331,13 +400,14 @@
             border-color: #0a8a5e;
 
             box-shadow:
-                0 5px 12px rgba(0, 90, 60, 0.18);
+                0 5px 12px
+                rgba(0, 90, 60, 0.18);
 
         }
 
 
         /* ==========================================
-           CAMPO DE CONSULTA
+           CAMPO
         ========================================== */
 
         .campo-area {
@@ -349,6 +419,7 @@
             border-top: 1px solid #e7ece9;
 
         }
+
 
         .campo-label {
 
@@ -363,6 +434,7 @@
             margin-bottom: 8px;
 
         }
+
 
         input {
 
@@ -386,12 +458,14 @@
 
         }
 
+
         input:focus {
 
             border-color: #0a8a5e;
 
             box-shadow:
-                0 0 0 3px rgba(10, 138, 94, 0.12);
+                0 0 0 3px
+                rgba(10, 138, 94, 0.12);
 
         }
 
@@ -428,17 +502,12 @@
 
         }
 
+
         #btnConsultar:hover {
 
             background: #08714d;
 
             transform: translateY(-1px);
-
-        }
-
-        #btnConsultar:active {
-
-            transform: translateY(0);
 
         }
 
@@ -464,7 +533,8 @@
             min-height: 90px;
 
             box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.04);
+                0 2px 8px
+                rgba(0, 0, 0, 0.04);
 
             line-height: 1.8;
 
@@ -474,7 +544,7 @@
 
 
         /* ==========================================
-           RESULTADO DO CARREGAMENTO
+           RESULTADO CARREGAMENTO
         ========================================== */
 
         .carregamento-resultado-titulo {
@@ -489,6 +559,7 @@
 
         }
 
+
         .carregamento-dados {
 
             display: grid;
@@ -499,6 +570,7 @@
             gap: 10px;
 
         }
+
 
         .dado-carregamento {
 
@@ -511,6 +583,7 @@
             padding: 10px 12px;
 
         }
+
 
         .dado-carregamento strong {
 
@@ -525,6 +598,7 @@
             margin-bottom: 2px;
 
         }
+
 
         .dado-carregamento span {
 
@@ -587,6 +661,7 @@
 
             }
 
+
             .header {
 
                 padding: 30px 20px;
@@ -595,11 +670,13 @@
 
             }
 
+
             .header h1 {
 
                 font-size: 24px;
 
             }
+
 
             .header p {
 
@@ -609,6 +686,7 @@
 
             }
 
+
             .card {
 
                 padding: 20px;
@@ -617,17 +695,20 @@
 
             }
 
+
             .titulo-consulta {
 
                 font-size: 21px;
 
             }
 
+
             .menu {
 
                 grid-template-columns: 1fr;
 
             }
+
 
             .frentes-grid {
 
@@ -636,19 +717,22 @@
 
             }
 
+
             .carregamento-dados {
 
                 grid-template-columns: 1fr;
 
             }
 
-            .carregamento-cabecalho {
 
-                align-items: flex-start;
+            .carregamento-cabecalho {
 
                 flex-direction: column;
 
+                align-items: stretch;
+
             }
+
 
             .btn-atualizar {
 
@@ -665,192 +749,150 @@
 
 <body>
 
-    <div class="container">
+
+<div class="container">
+
+
+    <!-- ==========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <div class="header">
+
+        <h1>
+            🚛 Portal Operacional de Frota
+        </h1>
+
+        <p>
+
+            Consulta de status, programação de paradas,
+            posicionamento da frota e carregamento
+
+        </p>
+
+    </div>
+
+
+    <!-- ==========================================
+         CARD
+    ========================================== -->
+
+    <div class="card">
+
+
+        <h2
+            class="titulo-consulta"
+            id="tituloConsulta"
+        >
+
+            Selecione uma consulta
+
+        </h2>
+
+
+        <p class="subtitulo">
+
+            Escolha uma das opções abaixo para consultar
+            as informações operacionais.
+
+        </p>
 
 
         <!-- ==========================================
-             CABEÇALHO
+             MENU
         ========================================== -->
 
-        <div class="header">
+        <div class="menu">
 
-            <h1>🚛 Portal Operacional de Frota</h1>
 
-            <p>
-                Consulta de status, programação de paradas,
-                posicionamento da frota e carregamento
-            </p>
+            <button
+                onclick="selecionarModo('status')"
+            >
+
+                🚛<br>
+
+                Status de Carretas
+
+            </button>
+
+
+            <button
+                onclick="selecionarModo('parada')"
+            >
+
+                🔧<br>
+
+                Programação de Parada
+
+            </button>
+
+
+            <button
+                onclick="selecionarModo('frota')"
+            >
+
+                📍<br>
+
+                Programação da Frota
+
+            </button>
+
+
+            <button
+                onclick="selecionarModo('carregamento')"
+            >
+
+                🪵<br>
+
+                Carregamento
+
+            </button>
+
 
         </div>
 
 
         <!-- ==========================================
-             ÁREA PRINCIPAL
+             CARREGAMENTO
         ========================================== -->
 
-        <div class="card">
+        <div
+            class="carregamento-area"
+            id="carregamentoArea"
+            style="display:none;"
+        >
 
 
-            <!-- TÍTULO -->
-
-            <h2
-                class="titulo-consulta"
-                id="tituloConsulta"
-            >
-
-                Selecione uma consulta
-
-            </h2>
+            <div class="carregamento-cabecalho">
 
 
-            <p class="subtitulo">
+                <span class="carregamento-titulo">
 
-                Escolha uma das opções abaixo para consultar
-                as informações operacionais.
+                    Selecione a frente de carregamento:
 
-            </p>
-
-
-            <!-- ==========================================
-                 MENU
-            ========================================== -->
-
-            <div class="menu">
-
-                <button
-                    onclick="selecionarModo('status')"
-                >
-
-                    🚛<br>
-                    Status de Carretas
-
-                </button>
+                </span>
 
 
                 <button
-                    onclick="selecionarModo('parada')"
+                    class="btn-atualizar"
+                    id="btnAtualizar"
+                    onclick="carregarFrentes()"
                 >
 
-                    🔧<br>
-                    Programação de Parada
+                    🔄 Atualizar dados
 
                 </button>
 
-
-                <button
-                    onclick="selecionarModo('frota')"
-                >
-
-                    📍<br>
-                    Programação da Frota
-
-                </button>
-
-
-                <button
-                    onclick="selecionarModo('carregamento')"
-                >
-
-                    🪵<br>
-                    Carregamento
-
-                </button>
 
             </div>
 
 
-            <!-- ==========================================
-                 ÁREA DAS FRENTES
-            ========================================== -->
-
             <div
-                class="carregamento-area"
-                id="carregamentoArea"
-                style="display: none;"
+                class="frentes-grid"
+                id="frentesGrid"
             >
 
-                <div class="carregamento-cabecalho">
-
-                    <span class="carregamento-titulo">
-
-                        Selecione a frente de carregamento:
-
-                    </span>
-
-
-                    <button
-                        class="btn-atualizar"
-                        id="btnAtualizar"
-                        onclick="carregarFrentes()"
-                    >
-
-                        🔄 Atualizar dados
-
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="frentes-grid"
-                    id="frentesGrid"
-                >
-
-                    Carregando frentes...
-
-                </div>
-
-            </div>
-
-
-            <!-- ==========================================
-                 CAMPO DE CONSULTA
-            ========================================== -->
-
-            <div
-                class="campo-area"
-                id="campoArea"
-            >
-
-                <label
-                    class="campo-label"
-                    for="codigo"
-                >
-
-                    Código para consulta
-
-                </label>
-
-
-                <input
-                    type="number"
-                    id="codigo"
-                    placeholder="Selecione uma consulta acima"
-                >
-
-
-                <button
-                    id="btnConsultar"
-                    onclick="consultar()"
-                >
-
-                    CONSULTAR
-
-                </button>
-
-            </div>
-
-
-            <!-- ==========================================
-                 RESULTADO
-            ========================================== -->
-
-            <div
-                class="resultado"
-                id="resultado"
-            >
-
-                Aguardando consulta...
+                Carregando frentes...
 
             </div>
 
@@ -859,13 +901,55 @@
 
 
         <!-- ==========================================
-             RODAPÉ
+             CONSULTAS
         ========================================== -->
 
-        <div class="footer">
+        <div
+            class="campo-area"
+            id="campoArea"
+        >
 
-            Dados atualizados automaticamente a partir
-            da base operacional do CCO
+
+            <label
+                class="campo-label"
+                for="codigo"
+            >
+
+                Código para consulta
+
+            </label>
+
+
+            <input
+                type="number"
+                id="codigo"
+                placeholder="Selecione uma consulta acima"
+            >
+
+
+            <button
+                id="btnConsultar"
+                onclick="consultar()"
+            >
+
+                CONSULTAR
+
+            </button>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             RESULTADO
+        ========================================== -->
+
+        <div
+            class="resultado"
+            id="resultado"
+        >
+
+            Aguardando consulta...
 
         </div>
 
@@ -873,1125 +957,1205 @@
     </div>
 
 
-    <script>
+    <!-- ==========================================
+         RODAPÉ
+    ========================================== -->
+
+    <div class="footer">
+
+        Dados atualizados automaticamente a partir
+        da base operacional do CCO
+
+    </div>
 
 
-        /* ==========================================
-           LINKS DAS PLANILHAS
-        ========================================== */
-
-        const URL_STATUS =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=0&single=true&output=csv";
+</div>
 
 
-        const URL_PARADA =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=1043445685&single=true&output=csv";
+
+<script>
 
 
-        const URL_FROTA =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=177734172&single=true&output=csv";
+/* ==========================================
+   LINKS DAS PLANILHAS
+========================================== */
 
 
-        const URL_CARREGAMENTO =
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=39403880&single=true&output=csv";
+const URL_STATUS =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=0&single=true&output=csv";
 
 
-        let modoAtual = "";
-
-        let dadosCarregamento = [];
-
-
-        /* ==========================================
-           SEPARAR CSV
-        ========================================== */
-
-        function separarCSV(linha) {
-
-            const resultado = [];
-
-            let campo = "";
-
-            let dentroAspas = false;
+const URL_PARADA =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=1043445685&single=true&output=csv";
 
 
-            for (
-                let i = 0;
-                i < linha.length;
-                i++
+const URL_FROTA =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=177734172&single=true&output=csv";
+
+
+const URL_CARREGAMENTO =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=39403880&single=true&output=csv";
+
+
+let modoAtual = "";
+
+let dadosCarregamento = [];
+
+
+/* ==========================================
+   LEITOR CSV
+========================================== */
+
+function separarCSV(linha) {
+
+    const resultado = [];
+
+    let campo = "";
+
+    let dentroAspas = false;
+
+
+    for (
+        let i = 0;
+        i < linha.length;
+        i++
+    ) {
+
+        const caractere = linha[i];
+
+
+        if (caractere === '"') {
+
+            if (
+                dentroAspas &&
+                linha[i + 1] === '"'
             ) {
 
-                const caractere =
-                    linha[i];
+                campo += '"';
 
-
-                if (
-                    caractere === '"'
-                ) {
-
-                    if (
-                        dentroAspas &&
-                        linha[i + 1] === '"'
-                    ) {
-
-                        campo += '"';
-
-                        i++;
-
-                    } else {
-
-                        dentroAspas =
-                            !dentroAspas;
-
-                    }
-
-                }
-
-                else if (
-                    caractere === "," &&
-                    !dentroAspas
-                ) {
-
-                    resultado.push(campo);
-
-                    campo = "";
-
-                }
-
-                else {
-
-                    campo += caractere;
-
-                }
+                i++;
 
             }
 
+            else {
+
+                dentroAspas =
+                    !dentroAspas;
+
+            }
+
+        }
+
+
+        else if (
+            caractere === "," &&
+            !dentroAspas
+        ) {
 
             resultado.push(campo);
 
-            return resultado;
+            campo = "";
 
         }
 
 
-        /* ==========================================
-           CARREGAR CSV
-        ========================================== */
+        else {
 
-        async function carregarCSV(url) {
+            campo += caractere;
 
-            const separador =
-                url.includes("?")
-                    ? "&"
-                    : "?";
+        }
+
+    }
 
 
-            const urlAtualizada =
-                url +
-                separador +
-                "cachebust=" +
-                Date.now();
+    resultado.push(campo);
 
 
-            const resposta =
-                await fetch(
-                    urlAtualizada,
-                    {
-                        method: "GET",
+    return resultado;
 
-                        cache: "no-store",
-
-                        headers: {
-                            "Cache-Control":
-                                "no-cache, no-store, must-revalidate",
-
-                            "Pragma":
-                                "no-cache",
-
-                            "Expires":
-                                "0"
-                        }
-                    }
-                );
+}
 
 
-            if (!resposta.ok) {
+/* ==========================================
+   CARREGAR CSV
+========================================== */
 
-                throw new Error(
-                    "Não foi possível acessar a planilha."
-                );
-
-            }
+async function carregarCSV(url) {
 
 
-            const texto =
-                await resposta.text();
+    const resposta =
+        await fetch(
+            url +
+            "&t=" +
+            new Date().getTime()
+        );
 
 
-            return texto
+    if (!resposta.ok) {
+
+        throw new Error(
+            "Não foi possível acessar a planilha."
+        );
+
+    }
+
+
+    const texto =
+        await resposta.text();
+
+
+    if (
+        !texto ||
+        texto.trim() === ""
+    ) {
+
+        throw new Error(
+            "A planilha retornou dados vazios."
+        );
+
+    }
+
+
+    return texto
+        .trim()
+        .split(/\r?\n/);
+
+}
+
+
+/* ==========================================
+   ENCONTRAR COLUNA
+========================================== */
+
+function encontrarColuna(
+    cabecalho,
+    nome
+) {
+
+
+    return cabecalho.findIndex(
+        coluna =>
+            coluna
                 .trim()
-                .split(/\r?\n/);
+                .toUpperCase()
+                .replace(/^"|"$/g, "")
+            ===
+            nome.toUpperCase()
+    );
 
-        }
+}
 
 
-        /* ==========================================
-           LOCALIZAR COLUNA
-        ========================================== */
+/* ==========================================
+   ÚLTIMA ATUALIZAÇÃO
+========================================== */
 
-        function encontrarColuna(
+function obterUltimaAtualizacao(
+    cabecalho,
+    linha
+) {
+
+
+    const indice =
+        encontrarColuna(
             cabecalho,
-            nome
+            "ULTIMA_ATUALIZACAO"
+        );
+
+
+    if (
+        indice === -1 ||
+        !linha[indice]
+    ) {
+
+        return "";
+
+    }
+
+
+    return linha[indice]
+        .trim()
+        .replace(/^"|"$/g, "");
+
+}
+
+
+/* ==========================================
+   MOSTRAR ÚLTIMA ATUALIZAÇÃO
+========================================== */
+
+function mostrarUltimaAtualizacao(
+    data
+) {
+
+
+    if (!data) {
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="ultima-atualizacao">
+
+            🕒 Última atualização da base:
+            ${data}
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==========================================
+   SELECIONAR MODO
+========================================== */
+
+async function selecionarModo(modo) {
+
+
+    modoAtual = modo;
+
+
+    const titulo =
+        document.getElementById(
+            "tituloConsulta"
+        );
+
+
+    const campo =
+        document.getElementById(
+            "codigo"
+        );
+
+
+    const campoArea =
+        document.getElementById(
+            "campoArea"
+        );
+
+
+    const carregamentoArea =
+        document.getElementById(
+            "carregamentoArea"
+        );
+
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    campo.value = "";
+
+
+    resultado.innerHTML =
+        "Aguardando consulta...";
+
+
+    carregamentoArea.style.display =
+        "none";
+
+
+    campoArea.style.display =
+        "block";
+
+
+    /* STATUS */
+
+    if (
+        modo === "status"
+    ) {
+
+        titulo.innerText =
+            "🚛 Consulta Status de Carretas";
+
+
+        campo.placeholder =
+            "Digite o GO da Carreta";
+
+    }
+
+
+    /* PARADA */
+
+    if (
+        modo === "parada"
+    ) {
+
+        titulo.innerText =
+            "🔧 Consulta Programação de Parada";
+
+
+        campo.placeholder =
+            "Digite o GO da Carreta";
+
+    }
+
+
+    /* FROTA */
+
+    if (
+        modo === "frota"
+    ) {
+
+        titulo.innerText =
+            "📍 Consulta Programação da Frota";
+
+
+        campo.placeholder =
+            "Digite o GO do Cavalo Mecânico";
+
+    }
+
+
+    /* CARREGAMENTO */
+
+    if (
+        modo === "carregamento"
+    ) {
+
+
+        titulo.innerText =
+            "🪵 Consulta Carregamento";
+
+
+        campoArea.style.display =
+            "none";
+
+
+        carregamentoArea.style.display =
+            "block";
+
+
+        await carregarFrentes();
+
+    }
+
+}
+
+
+/* ==========================================
+   CARREGAR FRENTES
+========================================== */
+
+async function carregarFrentes() {
+
+
+    const frentesGrid =
+        document.getElementById(
+            "frentesGrid"
+        );
+
+
+    const btnAtualizar =
+        document.getElementById(
+            "btnAtualizar"
+        );
+
+
+    /* LIMPA DADOS ANTIGOS */
+
+    dadosCarregamento = [];
+
+
+    /* LIMPA BOTÕES ANTIGOS */
+
+    frentesGrid.innerHTML =
+        "🔄 Atualizando dados...";
+
+
+    btnAtualizar.disabled = true;
+
+
+    btnAtualizar.innerText =
+        "🔄 Atualizando...";
+
+
+    try {
+
+
+        const linhas =
+            await carregarCSV(
+                URL_CARREGAMENTO
+            );
+
+
+        if (
+            linhas.length < 2
         ) {
 
-            return cabecalho.findIndex(
-                coluna =>
-                    coluna
-                        .trim()
-                        .toUpperCase() ===
-                    nome.toUpperCase()
+            frentesGrid.innerHTML =
+                "⚠️ Nenhuma frente encontrada.";
+
+            return;
+
+        }
+
+
+        const cabecalho =
+            separarCSV(
+                linhas[0]
+            );
+
+
+        const indiceFrentes =
+            encontrarColuna(
+                cabecalho,
+                "FRENTES"
+            );
+
+
+        if (
+            indiceFrentes === -1
+        ) {
+
+            throw new Error(
+                "A coluna FRENTES não foi encontrada."
             );
 
         }
 
 
         /* ==========================================
-           LOCALIZAR ÚLTIMA ATUALIZAÇÃO
+           LÊ TODAS AS LINHAS NOVAMENTE
         ========================================== */
 
-        function obterUltimaAtualizacao(
-            cabecalho,
-            linha
+        for (
+            let i = 1;
+            i < linhas.length;
+            i++
         ) {
 
-            const indice =
-                encontrarColuna(
-                    cabecalho,
-                    "ULTIMA_ATUALIZACAO"
-                );
-
 
             if (
-                indice === -1 ||
-                !linha[indice]
+                linhas[i].trim() === ""
             ) {
 
-                return "";
+                continue;
 
             }
 
 
-            return linha[indice].trim();
+            const dados =
+                separarCSV(
+                    linhas[i]
+                );
+
+
+            const nome =
+                (
+                    dados[indiceFrentes] || ""
+                )
+                .trim()
+                .replace(/^"|"$/g, "");
+
+
+            if (
+                nome !== ""
+            ) {
+
+                dadosCarregamento.push({
+
+                    cabecalho:
+                        cabecalho,
+
+                    dados:
+                        dados,
+
+                    nome:
+                        nome
+
+                });
+
+            }
 
         }
 
 
         /* ==========================================
-           MOSTRAR ÚLTIMA ATUALIZAÇÃO
+           LIMPA NOVAMENTE
         ========================================== */
 
-        function mostrarUltimaAtualizacao(
-            data
+        frentesGrid.innerHTML = "";
+
+
+        if (
+            dadosCarregamento.length === 0
         ) {
-
-            if (!data) {
-
-                return "";
-
-            }
-
-
-            return `
-
-                <div class="ultima-atualizacao">
-
-                    🕒 Última atualização da base:
-                    ${data}
-
-                </div>
-
-            `;
-
-        }
-
-
-        /* ==========================================
-           SELECIONAR MODO
-        ========================================== */
-
-        async function selecionarModo(modo) {
-
-            modoAtual = modo;
-
-
-            const titulo =
-                document.getElementById(
-                    "tituloConsulta"
-                );
-
-
-            const campo =
-                document.getElementById(
-                    "codigo"
-                );
-
-
-            const campoArea =
-                document.getElementById(
-                    "campoArea"
-                );
-
-
-            const carregamentoArea =
-                document.getElementById(
-                    "carregamentoArea"
-                );
-
-
-            const resultado =
-                document.getElementById(
-                    "resultado"
-                );
-
-
-            resultado.innerHTML =
-                "Aguardando consulta...";
-
-
-            campo.value = "";
-
-
-            carregamentoArea.style.display =
-                "none";
-
-
-            campoArea.style.display =
-                "block";
-
-
-            /* ==========================================
-               STATUS
-            ========================================== */
-
-            if (
-                modo === "status"
-            ) {
-
-                titulo.innerText =
-                    "🚛 Consulta Status de Carretas";
-
-                campo.placeholder =
-                    "Digite o GO da Carreta";
-
-            }
-
-
-            /* ==========================================
-               PARADA
-            ========================================== */
-
-            if (
-                modo === "parada"
-            ) {
-
-                titulo.innerText =
-                    "🔧 Consulta Programação de Parada";
-
-                campo.placeholder =
-                    "Digite o GO da Carreta";
-
-            }
-
-
-            /* ==========================================
-               FROTA
-            ========================================== */
-
-            if (
-                modo === "frota"
-            ) {
-
-                titulo.innerText =
-                    "📍 Consulta Programação da Frota";
-
-                campo.placeholder =
-                    "Digite o GO do Cavalo Mecânico";
-
-            }
-
-
-            /* ==========================================
-               CARREGAMENTO
-            ========================================== */
-
-            if (
-                modo === "carregamento"
-            ) {
-
-                titulo.innerText =
-                    "🪵 Consulta Carregamento";
-
-
-                campoArea.style.display =
-                    "none";
-
-
-                carregamentoArea.style.display =
-                    "block";
-
-
-                await carregarFrentes();
-
-            }
-
-        }
-
-
-        /* ==========================================
-           CARREGAR FRENTES
-        ========================================== */
-
-        async function carregarFrentes() {
-
-            const frentesGrid =
-                document.getElementById(
-                    "frentesGrid"
-                );
-
-
-            const btnAtualizar =
-                document.getElementById(
-                    "btnAtualizar"
-                );
-
-
-            /* ==========================================
-               LIMPA DADOS ANTIGOS
-            ========================================== */
-
-            dadosCarregamento = [];
-
-
-            /* ==========================================
-               ESTADO DE ATUALIZAÇÃO
-            ========================================== */
-
-            btnAtualizar.disabled = true;
-
-            btnAtualizar.innerText =
-                "🔄 Atualizando...";
-
 
             frentesGrid.innerHTML =
-                "🔄 Buscando dados atualizados...";
+                "⚠️ Nenhuma frente encontrada.";
+
+            return;
+
+        }
 
 
-            try {
+        /* ==========================================
+           CRIA OS BOTÕES
+        ========================================== */
 
-                const linhas =
-                    await carregarCSV(
-                        URL_CARREGAMENTO
+        dadosCarregamento.forEach(
+            (frente, indice) => {
+
+
+                const botao =
+                    document.createElement(
+                        "button"
                     );
 
 
-                if (
-                    linhas.length < 2
-                ) {
-
-                    frentesGrid.innerHTML =
-                        "⚠️ Nenhuma frente encontrada.";
-
-                    return;
-
-                }
+                botao.className =
+                    "frente-button";
 
 
-                const cabecalho =
-                    separarCSV(
-                        linhas[0]
-                    );
+                botao.innerText =
+                    "🪵 " +
+                    frente.nome;
 
 
-                const indiceFrentes =
-                    encontrarColuna(
-                        cabecalho,
-                        "FRENTES"
-                    );
+                botao.onclick =
+                    function () {
 
 
-                if (
-                    indiceFrentes === -1
-                ) {
-
-                    frentesGrid.innerHTML =
-                        "❌ A coluna FRENTES não foi encontrada.";
-
-                    return;
-
-                }
-
-
-                /* ==========================================
-                   RECONSTRÓI OS DADOS DO ZERO
-                ========================================== */
-
-                for (
-                    let i = 1;
-                    i < linhas.length;
-                    i++
-                ) {
-
-                    const dados =
-                        separarCSV(
-                            linhas[i]
-                        );
-
-
-                    const nomeFrente =
-                        dados[
-                            indiceFrentes
-                        ]?.trim();
-
-
-                    if (
-                        nomeFrente !== ""
-                    ) {
-
-                        dadosCarregamento.push({
-
-                            cabecalho:
-                                cabecalho,
-
-                            dados:
-                                dados,
-
-                            nome:
-                                nomeFrente
-
-                        });
-
-                    }
-
-                }
-
-
-                if (
-                    dadosCarregamento.length === 0
-                ) {
-
-                    frentesGrid.innerHTML =
-                        "⚠️ Nenhuma frente encontrada.";
-
-                    return;
-
-                }
-
-
-                /* ==========================================
-                   LIMPA BOTÕES ANTIGOS
-                ========================================== */
-
-                frentesGrid.innerHTML = "";
-
-
-                /* ==========================================
-                   CRIA NOVOS BOTÕES
-                ========================================== */
-
-                dadosCarregamento.forEach(
-                    (frente, indice) => {
-
-                        const botao =
-                            document.createElement(
-                                "button"
-                            );
-
-
-                        botao.className =
-                            "frente-button";
-
-
-                        botao.innerText =
-                            "🪵 " +
-                            frente.nome;
-
-
-                        botao.onclick =
-                            function () {
-
-                                selecionarFrente(
-                                    indice,
-                                    botao
-                                );
-
-                            };
-
-
-                        frentesGrid.appendChild(
+                        selecionarFrente(
+                            indice,
                             botao
                         );
 
-                    }
+                    };
+
+
+                frentesGrid.appendChild(
+                    botao
                 );
-
-
-            } catch (erro) {
-
-                console.error(erro);
-
-                frentesGrid.innerHTML = `
-
-                    ❌ Erro ao atualizar os dados.
-
-                    <br><br>
-
-                    Verifique se a planilha está publicada
-                    corretamente e tente novamente.
-
-                `;
-
-            } finally {
-
-                btnAtualizar.disabled = false;
-
-                btnAtualizar.innerText =
-                    "🔄 Atualizar dados";
 
             }
-
-        }
-
-
-        /* ==========================================
-           SELECIONAR FRENTE
-        ========================================== */
-
-        function selecionarFrente(
-            indice,
-            botao
-        ) {
-
-            const todosBotoes =
-                document.querySelectorAll(
-                    ".frente-button"
-                );
+        );
 
 
-            todosBotoes.forEach(
-                b =>
-                    b.classList.remove(
-                        "selecionada"
-                    )
-            );
+    }
+
+    catch (erro) {
 
 
-            botao.classList.add(
+        console.error(
+            "Erro ao carregar Carregamento:",
+            erro
+        );
+
+
+        frentesGrid.innerHTML = `
+
+            ❌ Não foi possível atualizar
+            os dados de Carregamento.
+
+            <br><br>
+
+            Verifique a publicação da planilha
+            e tente novamente.
+
+        `;
+
+    }
+
+    finally {
+
+
+        btnAtualizar.disabled =
+            false;
+
+
+        btnAtualizar.innerText =
+            "🔄 Atualizar dados";
+
+    }
+
+}
+
+
+/* ==========================================
+   SELECIONAR FRENTE
+========================================== */
+
+function selecionarFrente(
+    indice,
+    botao
+) {
+
+
+    const botoes =
+        document.querySelectorAll(
+            ".frente-button"
+        );
+
+
+    botoes.forEach(
+        elemento =>
+            elemento.classList.remove(
                 "selecionada"
-            );
+            )
+    );
 
 
-            const frente =
-                dadosCarregamento[
-                    indice
-                ];
+    botao.classList.add(
+        "selecionada"
+    );
 
 
-            if (!frente) {
+    const frente =
+        dadosCarregamento[
+            indice
+        ];
 
-                return;
 
-            }
+    if (!frente) {
+
+        return;
+
+    }
 
 
-            mostrarDadosFrente(
-                frente
-            );
+    mostrarDadosFrente(
+        frente
+    );
+
+}
+
+
+/* ==========================================
+   MOSTRAR DADOS DA FRENTE
+========================================== */
+
+function mostrarDadosFrente(
+    frente
+) {
+
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    const cabecalho =
+        frente.cabecalho;
+
+
+    const dados =
+        frente.dados;
+
+
+    const indiceGruasOperando =
+        encontrarColuna(
+            cabecalho,
+            "GRUAS_OPERANDO"
+        );
+
+
+    const indiceGruasReservas =
+        encontrarColuna(
+            cabecalho,
+            "GRUAS_RESERVAS"
+        );
+
+
+    const indiceGruasManutencao =
+        encontrarColuna(
+            cabecalho,
+            "GRUAS_EM_MANUTENCAO"
+        );
+
+
+    const indiceFrotasOperando =
+        encontrarColuna(
+            cabecalho,
+            "FROTAS_OPERANDO"
+        );
+
+
+    const indiceMudanca =
+        encontrarColuna(
+            cabecalho,
+            "MUDANCA_PREVISTA"
+        );
+
+
+    const indiceAtualizacao =
+        encontrarColuna(
+            cabecalho,
+            "ULTIMA_ATUALIZACAO"
+        );
+
+
+    function valor(indice) {
+
+
+        if (
+            indice === -1 ||
+            dados[indice] === undefined
+        ) {
+
+            return "-";
 
         }
 
 
+        const resultado =
+            dados[indice]
+                .trim()
+                .replace(/^"|"$/g, "");
+
+
+        return resultado === ""
+            ? "-"
+            : resultado;
+
+    }
+
+
+    const ultimaAtualizacao =
+        valor(
+            indiceAtualizacao
+        );
+
+
+    resultado.innerHTML = `
+
+        <div class="carregamento-resultado-titulo">
+
+            🪵 ${frente.nome}
+
+        </div>
+
+
+        <div class="carregamento-dados">
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Frente
+                </strong>
+
+                <span>
+                    ${frente.nome}
+                </span>
+
+            </div>
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Gruas operando
+                </strong>
+
+                <span>
+                    ${valor(
+                        indiceGruasOperando
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Gruas reservas
+                </strong>
+
+                <span>
+                    ${valor(
+                        indiceGruasReservas
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Gruas em manutenção
+                </strong>
+
+                <span>
+                    ${valor(
+                        indiceGruasManutencao
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Frotas operando
+                </strong>
+
+                <span>
+                    ${valor(
+                        indiceFrotasOperando
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="dado-carregamento">
+
+                <strong>
+                    Mudança prevista
+                </strong>
+
+                <span>
+                    ${valor(
+                        indiceMudanca
+                    )}
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        ${mostrarUltimaAtualizacao(
+            ultimaAtualizacao
+        )}
+
+    `;
+
+}
+
+
+/* ==========================================
+   CONSULTAR
+========================================== */
+
+async function consultar() {
+
+
+    if (
+        modoAtual === ""
+    ) {
+
+        alert(
+            "Selecione uma consulta."
+        );
+
+        return;
+
+    }
+
+
+    const valorDigitado =
+        document
+            .getElementById(
+                "codigo"
+            )
+            .value
+            .trim();
+
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    if (
+        valorDigitado === ""
+    ) {
+
+        resultado.innerHTML =
+            "⚠️ Digite um código para realizar a consulta.";
+
+        return;
+
+    }
+
+
+    resultado.innerHTML =
+        "🔄 Consultando dados...";
+
+
+    try {
+
+
         /* ==========================================
-           MOSTRAR DADOS DA FRENTE
+           STATUS
         ========================================== */
 
-        function mostrarDadosFrente(
-            frente
+        if (
+            modoAtual === "status"
         ) {
 
-            const resultado =
-                document.getElementById(
-                    "resultado"
+
+            const linhas =
+                await carregarCSV(
+                    URL_STATUS
                 );
 
 
             const cabecalho =
-                frente.cabecalho;
-
-
-            const dados =
-                frente.dados;
-
-
-            const indiceGruasOperando =
-                encontrarColuna(
-                    cabecalho,
-                    "GRUAS_OPERANDO"
+                separarCSV(
+                    linhas[0]
                 );
 
 
-            const indiceGruasReservas =
-                encontrarColuna(
-                    cabecalho,
-                    "GRUAS_RESERVAS"
+            for (
+                let i = 1;
+                i < linhas.length;
+                i++
+            ) {
+
+
+                const c =
+                    separarCSV(
+                        linhas[i]
+                    );
+
+
+                if (
+                    c[0]
+                        .trim()
+                        .replace(/^"|"$/g, "")
+                    ==
+                    valorDigitado
+                ) {
+
+
+                    const ultimaAtualizacao =
+                        obterUltimaAtualizacao(
+                            cabecalho,
+                            c
+                        );
+
+
+                    resultado.innerHTML = `
+
+                        <b>GO CARRETA:</b>
+                        ${c[0]}<br>
+
+                        <b>STATUS:</b>
+                        ${c[1]}<br>
+
+                        <b>ATIVIDADE:</b>
+                        ${c[2]}<br>
+
+                        <b>GO CAVALO:</b>
+                        ${c[3]}
+
+                        ${mostrarUltimaAtualizacao(
+                            ultimaAtualizacao
+                        )}
+
+                    `;
+
+
+                    return;
+
+                }
+
+            }
+
+        }
+
+
+        /* ==========================================
+           PARADA
+        ========================================== */
+
+        if (
+            modoAtual === "parada"
+        ) {
+
+
+            const linhas =
+                await carregarCSV(
+                    URL_PARADA
                 );
 
 
-            const indiceGruasManutencao =
-                encontrarColuna(
-                    cabecalho,
-                    "GRUAS_EM_MANUTENCAO"
+            const cabecalho =
+                separarCSV(
+                    linhas[0]
                 );
 
 
-            const indiceFrotasOperando =
-                encontrarColuna(
-                    cabecalho,
-                    "FROTAS_OPERANDO"
-                );
+            for (
+                let i = 1;
+                i < linhas.length;
+                i++
+            ) {
 
 
-            const indiceMudanca =
-                encontrarColuna(
-                    cabecalho,
-                    "MUDANCA_PREVISTA"
-                );
+                const c =
+                    separarCSV(
+                        linhas[i]
+                    );
 
 
-            const indiceAtualizacao =
-                encontrarColuna(
-                    cabecalho,
-                    "ULTIMA_ATUALIZACAO"
-                );
+                if (
+                    c[0]
+                        .trim()
+                        .replace(/^"|"$/g, "")
+                    ==
+                    valorDigitado
+                ) {
 
 
-            const valor =
-                indice => {
-
-                    if (
-                        indice === -1 ||
-                        dados[indice] === undefined ||
-                        dados[indice].trim() === ""
-                    ) {
-
-                        return "-";
-
-                    }
+                    const ultimaAtualizacao =
+                        obterUltimaAtualizacao(
+                            cabecalho,
+                            c
+                        );
 
 
-                    return dados[indice].trim();
+                    resultado.innerHTML = `
 
-                };
+                        <b>GO CARRETA:</b>
+                        ${c[0]}<br>
 
+                        <b>TIPO PARADA:</b>
+                        ${c[1]}<br>
 
-            const ultimaAtualizacao =
-                valor(
-                    indiceAtualizacao
-                );
+                        <b>DIA APROXIMADO:</b>
+                        ${c[2]}
 
+                        ${mostrarUltimaAtualizacao(
+                            ultimaAtualizacao
+                        )}
 
-            resultado.innerHTML = `
-
-                <div class="carregamento-resultado-titulo">
-
-                    🪵 ${frente.nome}
-
-                </div>
+                    `;
 
 
-                <div class="carregamento-dados">
+                    return;
 
-                    <div class="dado-carregamento">
+                }
 
-                        <strong>
-                            Frente
-                        </strong>
-
-                        <span>
-                            ${frente.nome}
-                        </span>
-
-                    </div>
-
-
-                    <div class="dado-carregamento">
-
-                        <strong>
-                            Gruas operando
-                        </strong>
-
-                        <span>
-                            ${valor(
-                                indiceGruasOperando
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="dado-carregamento">
-
-                        <strong>
-                            Gruas reservas
-                        </strong>
-
-                        <span>
-                            ${valor(
-                                indiceGruasReservas
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="dado-carregamento">
-
-                        <strong>
-                            Gruas em manutenção
-                        </strong>
-
-                        <span>
-                            ${valor(
-                                indiceGruasManutencao
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="dado-carregamento">
-
-                        <strong>
-                            Frotas operando
-                        </strong>
-
-                        <span>
-                            ${valor(
-                                indiceFrotasOperando
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="dado-carregamento">
-
-                        <strong>
-                            Mudança prevista
-                        </strong>
-
-                        <span>
-                            ${valor(
-                                indiceMudanca
-                            )}
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                ${mostrarUltimaAtualizacao(
-                    ultimaAtualizacao
-                )}
-
-            `;
+            }
 
         }
 
 
         /* ==========================================
-           CONSULTAR
+           FROTA
         ========================================== */
 
-        async function consultar() {
+        if (
+            modoAtual === "frota"
+        ) {
 
 
-            if (
-                modoAtual === ""
-            ) {
-
-                alert(
-                    "Selecione uma consulta."
-                );
-
-                return;
-
-            }
-
-
-            const valorDigitado =
-                document
-                    .getElementById(
-                        "codigo"
-                    )
-                    .value
-                    .trim();
-
-
-            const resultado =
-                document.getElementById(
-                    "resultado"
+            const linhas =
+                await carregarCSV(
+                    URL_FROTA
                 );
 
 
-            if (
-                valorDigitado === ""
+            const cabecalho =
+                separarCSV(
+                    linhas[0]
+                );
+
+
+            for (
+                let i = 1;
+                i < linhas.length;
+                i++
             ) {
 
-                resultado.innerHTML =
-                    "⚠️ Digite um código para realizar a consulta.";
 
-                return;
+                const c =
+                    separarCSV(
+                        linhas[i]
+                    );
 
-            }
-
-
-            resultado.innerHTML =
-                "🔄 Consultando dados...";
-
-
-            try {
-
-
-                /* ==========================================
-                   STATUS
-                ========================================== */
 
                 if (
-                    modoAtual === "status"
+                    c[0]
+                        .trim()
+                        .replace(/^"|"$/g, "")
+                    ==
+                    valorDigitado
                 ) {
 
-                    const linhas =
-                        await carregarCSV(
-                            URL_STATUS
+
+                    const ultimaAtualizacao =
+                        obterUltimaAtualizacao(
+                            cabecalho,
+                            c
                         );
 
 
-                    const cabecalho =
-                        separarCSV(
-                            linhas[0]
-                        );
+                    resultado.innerHTML = `
+
+                        <b>GO CAVALO:</b>
+                        ${c[0]}<br>
+
+                        <b>FRENTE:</b>
+                        ${c[1]}<br>
+
+                        <b>LOCALIZAÇÃO:</b>
+                        ${c[2]}
+
+                        ${mostrarUltimaAtualizacao(
+                            ultimaAtualizacao
+                        )}
+
+                    `;
 
 
-                    for (
-                        let i = 1;
-                        i < linhas.length;
-                        i++
-                    ) {
-
-                        const c =
-                            separarCSV(
-                                linhas[i]
-                            );
-
-
-                        if (
-                            c[0].trim() ==
-                            valorDigitado
-                        ) {
-
-                            const ultimaAtualizacao =
-                                obterUltimaAtualizacao(
-                                    cabecalho,
-                                    c
-                                );
-
-
-                            resultado.innerHTML = `
-
-                                <b>GO CARRETA:</b>
-                                ${c[0]}<br>
-
-                                <b>STATUS:</b>
-                                ${c[1]}<br>
-
-                                <b>ATIVIDADE:</b>
-                                ${c[2]}<br>
-
-                                <b>GO CAVALO:</b>
-                                ${c[3]}
-
-                                ${mostrarUltimaAtualizacao(
-                                    ultimaAtualizacao
-                                )}
-
-                            `;
-
-                            return;
-
-                        }
-
-                    }
+                    return;
 
                 }
-
-
-                /* ==========================================
-                   PARADA
-                ========================================== */
-
-                if (
-                    modoAtual === "parada"
-                ) {
-
-                    const linhas =
-                        await carregarCSV(
-                            URL_PARADA
-                        );
-
-
-                    const cabecalho =
-                        separarCSV(
-                            linhas[0]
-                        );
-
-
-                    for (
-                        let i = 1;
-                        i < linhas.length;
-                        i++
-                    ) {
-
-                        const c =
-                            separarCSV(
-                                linhas[i]
-                            );
-
-
-                        if (
-                            c[0].trim() ==
-                            valorDigitado
-                        ) {
-
-                            const ultimaAtualizacao =
-                                obterUltimaAtualizacao(
-                                    cabecalho,
-                                    c
-                                );
-
-
-                            resultado.innerHTML = `
-
-                                <b>GO CARRETA:</b>
-                                ${c[0]}<br>
-
-                                <b>TIPO PARADA:</b>
-                                ${c[1]}<br>
-
-                                <b>DIA APROXIMADO:</b>
-                                ${c[2]}
-
-                                ${mostrarUltimaAtualizacao(
-                                    ultimaAtualizacao
-                                )}
-
-                            `;
-
-                            return;
-
-                        }
-
-                    }
-
-                }
-
-
-                /* ==========================================
-                   FROTA
-                ========================================== */
-
-                if (
-                    modoAtual === "frota"
-                ) {
-
-                    const linhas =
-                        await carregarCSV(
-                            URL_FROTA
-                        );
-
-
-                    const cabecalho =
-                        separarCSV(
-                            linhas[0]
-                        );
-
-
-                    for (
-                        let i = 1;
-                        i < linhas.length;
-                        i++
-                    ) {
-
-                        const c =
-                            separarCSV(
-                                linhas[i]
-                            );
-
-
-                        if (
-                            c[0].trim() ==
-                            valorDigitado
-                        ) {
-
-                            const ultimaAtualizacao =
-                                obterUltimaAtualizacao(
-                                    cabecalho,
-                                    c
-                                );
-
-
-                            resultado.innerHTML = `
-
-                                <b>GO CAVALO:</b>
-                                ${c[0]}<br>
-
-                                <b>FRENTE:</b>
-                                ${c[1]}<br>
-
-                                <b>LOCALIZAÇÃO:</b>
-                                ${c[2]}
-
-                                ${mostrarUltimaAtualizacao(
-                                    ultimaAtualizacao
-                                )}
-
-                            `;
-
-                            return;
-
-                        }
-
-                    }
-
-                }
-
-
-                resultado.innerHTML =
-                    "⚠️ Registro não encontrado.";
-
-
-            } catch (erro) {
-
-                console.error(erro);
-
-                resultado.innerHTML =
-                    "❌ Erro ao consultar os dados. Verifique se a planilha está publicada corretamente.";
 
             }
 
         }
 
 
-    </script>
+        resultado.innerHTML =
+            "⚠️ Registro não encontrado.";
+
+
+    }
+
+    catch (erro) {
+
+
+        console.error(
+            erro
+        );
+
+
+        resultado.innerHTML = `
+
+            ❌ Erro ao consultar os dados.
+
+            <br><br>
+
+            Verifique se a planilha está publicada
+            corretamente.
+
+        `;
+
+    }
+
+}
+
+</script>
+
 
 </body>
 
