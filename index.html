@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -45,18 +46,14 @@
             );
 
             color: white;
-
             padding: 38px 35px;
-
             border-radius: 18px;
-
             text-align: center;
 
             box-shadow:
                 0 10px 30px rgba(0, 77, 54, 0.20);
 
             margin-bottom: 22px;
-
             position: relative;
             overflow: hidden;
         }
@@ -98,9 +95,7 @@
 
         .card {
             background: white;
-
             border-radius: 18px;
-
             padding: 30px;
 
             box-shadow:
@@ -116,21 +111,15 @@
 
         .titulo-consulta {
             color: #005a3c;
-
             font-size: 23px;
-
             font-weight: 700;
-
             margin-bottom: 18px;
         }
 
         .subtitulo {
             color: #6b7772;
-
             font-size: 14px;
-
             margin-top: -10px;
-
             margin-bottom: 22px;
         }
 
@@ -143,7 +132,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(4, 1fr);
 
             gap: 14px;
         }
@@ -197,9 +186,7 @@
 
         .campo-area {
             margin-top: 28px;
-
             padding-top: 25px;
-
             border-top: 1px solid #e7ece9;
         }
 
@@ -327,6 +314,27 @@
 
 
         /* ==========================================
+           ÚLTIMA ATUALIZAÇÃO
+        ========================================== */
+
+        .ultima-atualizacao {
+
+            margin-top: 16px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #dfe8e3;
+
+            color: #6b7772;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ==========================================
            RODAPÉ
         ========================================== */
 
@@ -418,8 +426,8 @@
             <h1>🚛 Portal Operacional de Frota</h1>
 
             <p>
-                Consulta de status, programação de paradas
-                e posicionamento da frota
+                Consulta de status, programação de paradas,
+                posicionamento da frota e carregamento
             </p>
 
         </div>
@@ -475,12 +483,20 @@
 
                 </button>
 
+
+                <button onclick="selecionarModo('carregamento')">
+
+                    🏗️<br>
+                    Carregamento
+
+                </button>
+
             </div>
 
 
             <!-- CAMPO -->
 
-            <div class="campo-area">
+            <div class="campo-area" id="campoArea">
 
                 <label
                     class="campo-label"
@@ -557,7 +573,66 @@
             "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=177734172&single=true&output=csv";
 
 
+        const URL_CARREGAMENTO =
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj-gn9U3QR5fINjXm3mJEUHbCiqGNyqlGqXZK1dgQbZBOE6FCEh754sGf1hvQk59uUrhaKWQWUt7I1/pub?gid=39403880&single=true&output=csv";
+
+
         let modoAtual = "";
+
+
+        /* ==========================================
+           FUNÇÃO PARA INTERPRETAR CSV
+        ========================================== */
+
+        function separarCSV(linha) {
+
+            const resultado = [];
+
+            let campo = "";
+            let dentroAspas = false;
+
+            for (let i = 0; i < linha.length; i++) {
+
+                const caractere = linha[i];
+
+                if (caractere === '"') {
+
+                    if (
+                        dentroAspas &&
+                        linha[i + 1] === '"'
+                    ) {
+
+                        campo += '"';
+                        i++;
+
+                    } else {
+
+                        dentroAspas =
+                            !dentroAspas;
+
+                    }
+
+                } else if (
+                    caractere === "," &&
+                    !dentroAspas
+                ) {
+
+                    resultado.push(campo);
+                    campo = "";
+
+                } else {
+
+                    campo += caractere;
+
+                }
+
+            }
+
+            resultado.push(campo);
+
+            return resultado;
+
+        }
 
 
         /* ==========================================
@@ -578,6 +653,11 @@
                     "codigo"
                 );
 
+            const campoArea =
+                document.getElementById(
+                    "campoArea"
+                );
+
             const resultado =
                 document.getElementById(
                     "resultado"
@@ -588,6 +668,10 @@
                 "Aguardando consulta...";
 
 
+            /* ==========================================
+               STATUS
+            ========================================== */
+
             if (modo === "status") {
 
                 titulo.innerText =
@@ -596,8 +680,15 @@
                 campo.placeholder =
                     "Digite o GO da Carreta";
 
+                campoArea.style.display =
+                    "block";
+
             }
 
+
+            /* ==========================================
+               PARADA
+            ========================================== */
 
             if (modo === "parada") {
 
@@ -607,8 +698,15 @@
                 campo.placeholder =
                     "Digite o GO da Carreta";
 
+                campoArea.style.display =
+                    "block";
+
             }
 
+
+            /* ==========================================
+               FROTA
+            ========================================== */
 
             if (modo === "frota") {
 
@@ -617,6 +715,26 @@
 
                 campo.placeholder =
                     "Digite o GO do Cavalo Mecânico";
+
+                campoArea.style.display =
+                    "block";
+
+            }
+
+
+            /* ==========================================
+               CARREGAMENTO
+            ========================================== */
+
+            if (modo === "carregamento") {
+
+                titulo.innerText =
+                    "🏗️ Consulta Carregamento";
+
+                campoArea.style.display =
+                    "none";
+
+                consultar();
 
             }
 
@@ -652,7 +770,70 @@
 
             return texto
                 .trim()
-                .split("\n");
+                .split(/\r?\n/);
+
+        }
+
+
+        /* ==========================================
+           LOCALIZAR ÚLTIMA ATUALIZAÇÃO
+        ========================================== */
+
+        function obterUltimaAtualizacao(
+            cabecalho,
+            linha
+        ) {
+
+            const indice =
+                cabecalho.findIndex(
+                    coluna =>
+                        coluna
+                            .trim()
+                            .toUpperCase() ===
+                        "ULTIMA_ATUALIZACAO"
+                );
+
+
+            if (
+                indice === -1 ||
+                !linha[indice]
+            ) {
+
+                return "";
+
+            }
+
+
+            return linha[indice].trim();
+
+        }
+
+
+        /* ==========================================
+           MOSTRAR ÚLTIMA ATUALIZAÇÃO
+        ========================================== */
+
+        function mostrarUltimaAtualizacao(
+            data
+        ) {
+
+            if (!data) {
+
+                return "";
+
+            }
+
+
+            return `
+
+                <div class="ultima-atualizacao">
+
+                    🕒 Última atualização da base:
+                    ${data}
+
+                </div>
+
+            `;
 
         }
 
@@ -663,6 +844,164 @@
 
         async function consultar() {
 
+
+            const resultado =
+                document.getElementById(
+                    "resultado"
+                );
+
+
+            /* ==========================================
+               CARREGAMENTO
+            ========================================== */
+
+            if (
+                modoAtual ===
+                "carregamento"
+            ) {
+
+                resultado.innerHTML =
+                    "🔄 Consultando dados de carregamento...";
+
+
+                try {
+
+                    const linhas =
+                        await carregarCSV(
+                            URL_CARREGAMENTO
+                        );
+
+
+                    if (linhas.length < 2) {
+
+                        resultado.innerHTML =
+                            "⚠️ Não existem dados de carregamento disponíveis.";
+
+                        return;
+
+                    }
+
+
+                    const cabecalho =
+                        separarCSV(
+                            linhas[0]
+                        );
+
+
+                    const dados =
+                        separarCSV(
+                            linhas[1]
+                        );
+
+
+                    const ultimaAtualizacao =
+                        obterUltimaAtualizacao(
+                            cabecalho,
+                            dados
+                        );
+
+
+                    const indiceFrentes =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "FRENTES"
+                        );
+
+
+                    const indiceGruasOperando =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "GRUAS_OPERANDO"
+                        );
+
+
+                    const indiceGruasReservas =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "GRUAS_RESERVAS"
+                        );
+
+
+                    const indiceGruasManutencao =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "GRUAS_EM_MANUTENCAO"
+                        );
+
+
+                    const indiceFrotasOperando =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "FROTAS_OPERANDO"
+                        );
+
+
+                    const indiceMudanca =
+                        cabecalho.findIndex(
+                            c =>
+                                c.trim()
+                                .toUpperCase() ===
+                                "MUDANCA_PREVISTA"
+                        );
+
+
+                    resultado.innerHTML = `
+
+                        <b>FRENTES:</b>
+                        ${dados[indiceFrentes] || "-"}<br>
+
+                        <b>GRUAS OPERANDO:</b>
+                        ${dados[indiceGruasOperando] || "-"}<br>
+
+                        <b>GRUAS RESERVAS:</b>
+                        ${dados[indiceGruasReservas] || "-"}<br>
+
+                        <b>GRUAS EM MANUTENÇÃO:</b>
+                        ${dados[indiceGruasManutencao] || "-"}<br>
+
+                        <b>FROTAS OPERANDO:</b>
+                        ${dados[indiceFrotasOperando] || "-"}<br>
+
+                        <b>MUDANÇA PREVISTA:</b>
+                        ${dados[indiceMudanca] || "-"}
+
+                        ${mostrarUltimaAtualizacao(
+                            ultimaAtualizacao
+                        )}
+
+                    `;
+
+
+                    return;
+
+
+                } catch (erro) {
+
+                    console.error(erro);
+
+                    resultado.innerHTML =
+                        "❌ Erro ao consultar os dados de carregamento. Verifique se a planilha está publicada corretamente.";
+
+                    return;
+
+                }
+
+            }
+
+
+            /* ==========================================
+               VERIFICAR MODO
+            ========================================== */
 
             if (modoAtual === "") {
 
@@ -680,12 +1019,6 @@
                     .getElementById("codigo")
                     .value
                     .trim();
-
-
-            const resultado =
-                document.getElementById(
-                    "resultado"
-                );
 
 
             if (valor === "") {
@@ -717,6 +1050,12 @@
                         );
 
 
+                    const cabecalho =
+                        separarCSV(
+                            linhas[0]
+                        );
+
+
                     for (
                         let i = 1;
                         i < linhas.length;
@@ -724,12 +1063,21 @@
                     ) {
 
                         const c =
-                            linhas[i].split(",");
+                            separarCSV(
+                                linhas[i]
+                            );
 
 
                         if (
                             c[0].trim() == valor
                         ) {
+
+                            const ultimaAtualizacao =
+                                obterUltimaAtualizacao(
+                                    cabecalho,
+                                    c
+                                );
+
 
                             resultado.innerHTML = `
 
@@ -744,6 +1092,10 @@
 
                                 <b>GO CAVALO:</b>
                                 ${c[3]}
+
+                                ${mostrarUltimaAtualizacao(
+                                    ultimaAtualizacao
+                                )}
 
                             `;
 
@@ -768,6 +1120,12 @@
                         );
 
 
+                    const cabecalho =
+                        separarCSV(
+                            linhas[0]
+                        );
+
+
                     for (
                         let i = 1;
                         i < linhas.length;
@@ -775,12 +1133,21 @@
                     ) {
 
                         const c =
-                            linhas[i].split(",");
+                            separarCSV(
+                                linhas[i]
+                            );
 
 
                         if (
                             c[0].trim() == valor
                         ) {
+
+                            const ultimaAtualizacao =
+                                obterUltimaAtualizacao(
+                                    cabecalho,
+                                    c
+                                );
+
 
                             resultado.innerHTML = `
 
@@ -792,6 +1159,10 @@
 
                                 <b>DIA APROXIMADO:</b>
                                 ${c[2]}
+
+                                ${mostrarUltimaAtualizacao(
+                                    ultimaAtualizacao
+                                )}
 
                             `;
 
@@ -816,6 +1187,12 @@
                         );
 
 
+                    const cabecalho =
+                        separarCSV(
+                            linhas[0]
+                        );
+
+
                     for (
                         let i = 1;
                         i < linhas.length;
@@ -823,12 +1200,21 @@
                     ) {
 
                         const c =
-                            linhas[i].split(",");
+                            separarCSV(
+                                linhas[i]
+                            );
 
 
                         if (
                             c[0].trim() == valor
                         ) {
+
+                            const ultimaAtualizacao =
+                                obterUltimaAtualizacao(
+                                    cabecalho,
+                                    c
+                                );
+
 
                             resultado.innerHTML = `
 
@@ -840,6 +1226,10 @@
 
                                 <b>LOCALIZAÇÃO:</b>
                                 ${c[2]}
+
+                                ${mostrarUltimaAtualizacao(
+                                    ultimaAtualizacao
+                                )}
 
                             `;
 
@@ -872,3 +1262,4 @@
 </body>
 
 </html>
+```
